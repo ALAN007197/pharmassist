@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.DoctorDetailsPage"
+             Title="Doctor Details">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="20">
+
+            <StackLayout
+                Margin="0,20,0,0">
+                <Grid
+                    HeightRequest="50"
+                    ColumnDefinitions="*,*,*,*">
+
+                    <Label
+                        Text="Name"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand" />
+                    <Label
+                        Grid.Column="1"
+                        Text="Department"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand" />
+                    <Label
+                        Grid.Column="2"
+                        Text="Time"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand" />
+
+                </Grid>
+                <BoxView
+                    HeightRequest="2"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="SkyBlue" />
+            </StackLayout>
+            <ListView
+                x:Name="DoctorView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="0,2,0,0">
+                                <Grid
+                                    ColumnDefinitions="*,*,*,*">
+
+                                    <Label
+                                        Text="{Binding DrName}"
+                                        TextColor="Black"
+                                        HorizontalOptions="StartAndExpand" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding DrDepartment}"
+                                        TextColor="Black"
+                                        HorizontalOptions="StartAndExpand" />
+                                    <Label
+                                        Grid.Column="2"
+                                        Text="{Binding DrTime }"
+                                        TextColor="Black"
+                                        HorizontalOptions="StartAndExpand" />
+
+                                </Grid>
+                                <BoxView
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="CornflowerBlue" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

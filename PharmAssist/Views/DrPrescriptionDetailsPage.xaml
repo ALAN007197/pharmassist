@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localconverter="clr-namespace:PharmAssist.Converter"
+    x:Class="PharmAssist.Views.DrPrescriptionDetailsPage"
+             Title="Prescription Details">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <localconverter:InverseBoolConverter
+                x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout
+                Margin="20">
+                <Grid
+                    ColumnDefinitions="*,*"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0"
+                    Padding="0">
+
+                    <StackLayout>
+
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Name : "
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        x:Name="PName"
+                                        Text="No Data" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Age : "
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        x:Name="PAge"
+                                        Text="No Data" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+                    <StackLayout
+                        Grid.Column="1">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Token No : "
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        x:Name="PTocken"
+                                        Text="No Data" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Gender : "
+                                        FontAttributes="Bold" />
+                                    <Span
+                                        x:Name="PGender"
+                                        Text="No Data" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+                <StackLayout
+                    VerticalOptions="StartAndExpand"
+                    Padding="0"
+                    HeightRequest="60"
+                    Margin="0,40,0,0">
+                    <Grid
+                        ColumnDefinitions="*,0.25*,0.25*,0.25*,0.25*,0.25*,*">
+                        <Label
+                            Text="Medicine"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="StartAndExpand" />
+                        <Label
+                            Grid.Column="1"
+                            Text="Morning "
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+                        <Label
+                            Grid.Column="2"
+                            Text="Noon"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+                        <Label
+                            Grid.Column="3"
+                            Text="Night"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+                        <Label
+                            Grid.Column="4"
+                            Text="Before food"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+                        <Label
+                            Margin="10,0,0,0"
+                            Grid.Column="5"
+                            Text="Days"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+                        <Label
+                            x:Name="totalColunt"
+                            Margin="10,0,0,0"
+                            Grid.Column="6"
+                            Text="Price"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+
+                    </Grid>
+                    <BoxView
+                        HeightRequest="2"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="SkyBlue" />
+                </StackLayout>
+                <ListView
+                    SelectionMode="None"
+                    Margin="0,0,0,0"
+                    x:Name="OplistView"
+                    VerticalOptions="StartAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Margin="0,2,0,0">
+                                    <Grid
+                                        VerticalOptions="Center"
+                                        ColumnDefinitions="*,0.25*,0.25*,0.25*,0.25*,0.25*,*">
+                                        <StackLayout>
+                                            <Picker
+                                                WidthRequest="300"
+                                                x:Name="MedPicker"
+                                                IsVisible="{Binding IsAlertVisible}"
+                                                ItemsSource="{Binding MedList}"
+                                                ItemDisplayBinding="{Binding Name}"
+                                                SelectedItem="{Binding SelectedDedicine}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                SelectedIndexChanged="OnclicktoSelectionChange" />
+                                            <Label
+                                                WidthRequest="300"
+                                                Text="{Binding SelectedDedicine.Name}"
+                                                IsVisible="{Binding IsAlertVisible,Converter={StaticResource InverseBoolConverter}}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start" />
+                                        </StackLayout>
+
+                                        <CheckBox
+                                            Grid.Column="1"
+                                            IsEnabled="{Binding IsAlertVisible}"
+                                            IsChecked="{Binding Morning}"
+                                            CheckedChanged="OnCheckChanged"/>
+                                        <CheckBox
+                                            Grid.Column="2"
+                                            IsEnabled="{Binding IsAlertVisible}"
+                                            IsChecked="{Binding Noon}"
+                                            CheckedChanged="OnCheckChanged"/>
+                                        <CheckBox
+                                            Grid.Column="3"
+                                            IsEnabled="{Binding IsAlertVisible}"
+                                            IsChecked="{Binding Evening}"
+                                            CheckedChanged="OnCheckChanged"/>
+                                        <CheckBox
+                                            Grid.Column="4"
+                                            IsEnabled="{Binding IsAlertVisible}"
+                                            IsChecked="{Binding Befor}" />
+
+
+                                        <Entry
+                                            Margin="10,0,0,0"
+                                            Grid.Column="5"
+                                            Placeholder="Days"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding NoDays}"
+                                            IsEnabled="{Binding IsAlertVisible}"
+                                            Keyboard="Numeric"
+                                            TextChanged="OnTextChange" />
+                                        <Button
+                                            IsVisible="{Binding IsAlertVisible}"
+                                            CommandParameter="{Binding .}"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Grid.Column="6"
+                                            Margin="0"
+                                            Padding="10,5,10,5"
+                                            CornerRadius="5"
+                                            Text="Delete"
+                                            BackgroundColor="CornflowerBlue"
+                                            TextColor="White"
+                                            Clicked="OnClicktoDelete" />
+                                        <Label
+                                            Grid.Column="6"
+                                            WidthRequest="300"
+                                            Text="{Binding SelectedDedicine.Price}"
+                                            IsVisible="{Binding IsAlertVisible,Converter={StaticResource InverseBoolConverter}}"
+                                            TextColor="Black"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"/>
+
+                                    </Grid>
+                                    <BoxView
+                                        HeightRequest="2"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="CornflowerBlue" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            VerticalOptions="Start"
+                            HorizontalOptions="StartAndExpand">
+                            <Button
+                                x:Name="AddButton"
+                                WidthRequest="100"
+                                HeightRequest="40"
+                                VerticalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
+                                Grid.Column="3"
+                                Margin="0"
+                                Padding="10,5,10,5"
+                                CornerRadius="5"
+                                Text="Add"
+                                BackgroundColor="CornflowerBlue"
+                                TextColor="White"
+                                Clicked="OnClicktoAdd" />
+                            <Button
+                                x:Name="submitBtn"
+                                WidthRequest="100"
+                                HeightRequest="40"
+                                VerticalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
+                                Grid.Column="3"
+                                Margin="0"
+                                Padding="10,5,10,5"
+                                CornerRadius="5"
+                                Text="Submit"
+                                BackgroundColor="CornflowerBlue"
+                                TextColor="White"
+                                Clicked="OnclickToSubmit" /> 
+                            
+                            <Button
+                                x:Name="PrintBtn"
+                                WidthRequest="100"
+                                HeightRequest="40"
+                                VerticalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
+                                Grid.Column="3"
+                                Margin="0"
+                                Padding="10,5,10,5"
+                                CornerRadius="5"
+                                Text="Print Bill"
+                                BackgroundColor="CornflowerBlue"
+                                TextColor="White"
+                                Clicked="OnClicktoPrintBill" />
+                            
+
+                            <Label
+                                x:Name="TotalRecordTextLabel" 
+                                HorizontalOptions="EndAndExpand"
+                                IsVisible="{Binding IsAlertVisible,Converter={StaticResource InverseBoolConverter}}"
+                                Margin="0,0,10,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="Total :"
+                                            FontSize="22" />
+                                        <Span
+                                            x:Name="TotalTxt"
+                                            TextColor="Black"
+                                            FontSize="22"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ListView.Footer>
+                </ListView>
+            </StackLayout>
+            <ActivityIndicator
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="false"
+                x:Name="IsLoading"
+                Color="Blue"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

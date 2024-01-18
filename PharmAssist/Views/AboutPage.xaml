@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.AboutPage"
+             xmlns:vm="clr-namespace:PharmAssist.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color
+                x:Key="BorderColor">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        ColumnDefinitions=".7*,.3*"
+        Padding="0,20">
+
+        <Frame
+            CornerRadius="20"
+            Margin="-20,0,0,0"
+            Padding="0,-20,0,-20">
+            <Image
+                Rotation="180"
+                Margin="0,0,0,0"
+                Source="Wallpaper.jpg"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Aspect="AspectFill" />
+        </Frame>
+
+        <Grid
+            Grid.Column="1">
+
+            <ScrollView
+                Margin="0,30,0,0">
+                <StackLayout
+                    Padding="10,0,10,0"
+                    Spacing="20"
+                    VerticalOptions="Center">
+                   
+                    <Button
+                        x:Name="ResepBtn"
+                        TextColor="{StaticResource BorderColor}"
+                        BackgroundColor="SkyBlue"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        Text="Reception"
+                        Clicked="PharmClicked"
+                        HeightRequest="45" />
+                    <Button
+                        x:Name="DoctorBtn"
+                        TextColor="{StaticResource BorderColor}"
+                        BackgroundColor="SkyBlue"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        Text="Doctor"
+                        Clicked="OnclickDoctor"
+                        HeightRequest="45" />
+                    <Button
+                        x:Name="DoctorDetailsBtn"
+                        TextColor="{StaticResource BorderColor}"
+                        BackgroundColor="SkyBlue"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        Text="Doctors Details"
+                        Clicked="OnClickDoctorDetails"
+                        HeightRequest="45" />
+                    <Button
+                        x:Name="PharmaBtn"
+                        TextColor="{StaticResource BorderColor}"
+                        BackgroundColor="SkyBlue"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        Text="Pharmacy"
+                        Clicked="OnClickPharmacy"
+                        HeightRequest="45" />
+                    <Button
+                        x:Name="BillBtn"
+                        TextColor="{StaticResource BorderColor}"
+                        BackgroundColor="SkyBlue"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        Text="Bill Details"
+                        Clicked="OnClickBillDetails"
+                        HeightRequest="45" />
+                </StackLayout>
+            </ScrollView>
+           
+        </Grid>
+    </Grid>
+
+</ContentPage>

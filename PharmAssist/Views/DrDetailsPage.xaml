@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.DrDetailsPage"
+             Title="Doctor Details">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout
+                x:Name="DoctorDetailsFrame"
+                Padding="20">
+                <StackLayout
+                    Spacing="0"
+                    Orientation="Horizontal"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="StartAndExpand">
+                        <Entry
+                            x:Name="SearchBox"
+                            HorizontalOptions="StartAndExpand"
+                            WidthRequest="350"
+                            Placeholder="Search Name"
+                            TextColor="Black" />
+
+                        <Button
+                            HorizontalOptions="StartAndExpand"
+                            Text="Search"
+                            Clicked="OnClickToSearch"
+                            TextColor="White"
+                            BackgroundColor="CornflowerBlue"
+                            Padding="20,0,20,0"
+                            HeightRequest="40"
+                            WidthRequest="120" />
+                    </StackLayout>
+                  
+
+                    <Button
+                        x:Name="AddDoctor"
+                        HorizontalOptions="EndAndExpand"
+                        Text="Add Doctor"
+                        TextColor="White"
+                        Clicked="OnclickToAddDoctor"
+                        BackgroundColor="CornflowerBlue"
+                        Padding="20,0,20,0"
+                        HeightRequest="40"
+                        WidthRequest="120" />
+                </StackLayout>
+                <StackLayout
+                    VerticalOptions="StartAndExpand"
+                    Padding="0"
+                    HeightRequest="50"
+                    Margin="0,20,0,0">
+                    <Grid
+                        HeightRequest="50"
+                        ColumnDefinitions="*,*,*,*">
+
+                        <Label
+                            Text="Dr Name"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="StartAndExpand" />
+                        <Label
+                            Grid.Column="1"
+                            Text="Department"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+                        <Label
+                            Grid.Column="2"
+                            Text="Time"
+                            TextColor="CornflowerBlue"
+                            HorizontalOptions="Start" />
+
+                    </Grid>
+                    <BoxView
+                        HeightRequest="2"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="SkyBlue" />
+                </StackLayout>
+                <ListView
+                    Margin="0"
+                    x:Name="DrlistView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Margin="0,2,0,0">
+                                    <Grid
+                                        VerticalOptions="Center"
+                                        ColumnDefinitions="*,*,*,*">
+                                        <Label
+                                            Text="{Binding DrName}"
+                                            TextColor="Black"
+                                            HorizontalOptions="Start" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding DrDepartment}"
+                                            TextColor="Black"
+                                            HorizontalOptions="Start" />
+                                        <Label
+                                            Grid.Column="2"
+                                            Text="{Binding DrTime}"
+                                            TextColor="Black"
+                                            HorizontalOptions="Start" />
+
+                                        <StackLayout
+                                            HorizontalOptions="CenterAndExpand"
+                                            Spacing="3"
+                                            Orientation="Horizontal"
+                                            Grid.Column="3">
+                                            <Button
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="Edit"
+                                                TextColor="White"
+                                                Clicked="OnClickToEdit"
+                                                BackgroundColor="CornflowerBlue"
+                                                Padding="20,0,20,0"
+                                                Margin="0"
+                                                CommandParameter="{Binding .}"
+                                                HeightRequest="40" />
+
+                                            <Button
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="Delete"
+                                                TextColor="White"
+                                                Clicked="OnClickToDelete"
+                                                BackgroundColor="CornflowerBlue"
+                                                Padding="20,0,20,0"
+                                                Margin="0"
+                                                CommandParameter="{Binding .}"
+                                                HeightRequest="40" />
+                                        </StackLayout>
+
+                                    </Grid>
+                                    <BoxView
+                                        HeightRequest="2"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="CornflowerBlue" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

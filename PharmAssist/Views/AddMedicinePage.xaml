@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.AddMedicinePage"
+             Title="Add Medicine">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20">
+            <StackLayout>
+
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    Text="Medicine:"
+                    TextColor="CornflowerBlue" />
+                <Entry
+                    x:Name="MedName"
+                    HorizontalOptions="StartAndExpand"
+                    WidthRequest="350"
+                    Placeholder="Enter Medicine"
+                    TextColor="Black"
+                    TextChanged="OnTextChange"/>
+
+
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    Text="Quantity:"
+                    TextColor="CornflowerBlue" />
+                <Entry
+                    x:Name="MedQty"
+                    HorizontalOptions="StartAndExpand"
+                    WidthRequest="350"
+                    Placeholder="Enter Qty"
+                    TextColor="Black"
+                    TextChanged="OnTextChange"/>
+
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    Text="Price:"
+                    TextColor="CornflowerBlue" />
+                <Entry
+                    x:Name="MedPrice"
+                    HorizontalOptions="StartAndExpand"
+                    WidthRequest="350"
+                    Placeholder="Enter Price"
+                    TextColor="Black"
+                    TextChanged="OnTextChange"/>                
+
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    Text="Expery Date:"
+                    TextColor="CornflowerBlue" />
+                <DatePicker
+                    x:Name="ExpDate"
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="Black" />
+
+            </StackLayout>
+            <StackLayout
+                Padding="20"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="SubmitButton"
+                    HorizontalOptions="Center"
+                    Text="Submit"
+                    TextColor="White"
+                    BackgroundColor="CornflowerBlue"
+                    Padding="20,0,20,0"
+                    HeightRequest="40"
+                    WidthRequest="120"
+                    Clicked="OnClickToSubmit"/>
+
+                <Button
+                    HorizontalOptions="Center"
+                    Text="Cancel"
+                    TextColor="White"
+                    Clicked="OnClickToCancel"
+                    BackgroundColor="CornflowerBlue"
+                    Padding="20,0,20,0"
+                    HeightRequest="40"
+                    WidthRequest="120" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

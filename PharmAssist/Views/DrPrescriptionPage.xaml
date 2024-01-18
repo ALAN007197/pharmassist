@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.DrPrescriptionPage"
+             Title="Patients List">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20">
+            <StackLayout
+                VerticalOptions="StartAndExpand"
+                Padding="0"
+                HeightRequest="50"
+                Margin="0,0,0,0">
+                <Grid
+                    ColumnDefinitions="*,*,*,*">
+
+                    <Label
+                        Text="OP Ticket Number"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand"/>
+                    <Label
+                        Grid.Column="1"
+                        Text="Name"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="Start" />
+                    <Label
+                        Grid.Column="2"
+                        Text="Date"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="Start" />
+                                       
+                </Grid>
+                <BoxView
+                    HeightRequest="2"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="SkyBlue" />
+            </StackLayout>
+
+            <ListView
+                Margin="0"
+                x:Name="OplistView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="0,2,0,0">
+                                <Grid
+                                    VerticalOptions="Center"
+                                    ColumnDefinitions="*,*,*,*">
+                                    <Label
+                                        Text="{Binding OpticketId}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding OpName}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+                                    <Label
+                                        Grid.Column="2"
+                                        Text="{Binding CreatedDate}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+
+                                    <Button
+                                        CommandParameter="{Binding .}"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="3"
+                                        Margin="0"
+                                        Padding="10,5,10,5"
+                                        CornerRadius="5"
+                                        Text="Proceed"
+                                        BackgroundColor="CornflowerBlue"
+                                        TextColor="White"
+                                        Clicked="OnClickProceed"/>
+
+                                </Grid>
+                                <BoxView
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="CornflowerBlue" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

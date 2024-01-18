@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.PharmacyPage"
+             Title="Pharmacy">
+    <ContentPage.Content>
+        <StackLayout
+            x:Name="DoctorDetailsFrame"
+            Padding="20">
+            <StackLayout
+                Spacing="0"
+                Orientation="Horizontal"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="StartAndExpand">
+                    <Entry
+                        x:Name="SearchBox"
+                        HorizontalOptions="StartAndExpand"
+                        WidthRequest="350"
+                        Placeholder="Search Med Name"
+                        TextColor="Black" />
+
+                    <Button
+                        HorizontalOptions="StartAndExpand"
+                        Text="Search"
+                        TextColor="White"
+                        BackgroundColor="CornflowerBlue"
+                        Padding="20,0,20,0"
+                        HeightRequest="40"
+                        WidthRequest="120"
+                        Clicked="OnClickToSearch"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="End"
+                             Spacing="0">
+
+                    <Button
+                        HorizontalOptions="EndAndExpand"
+                        Text="Add Medicines"
+                        TextColor="White"
+                        Clicked="OnclickToAddMedicines"
+                        BackgroundColor="CornflowerBlue"
+                        Padding="20,0,20,0"
+                        Margin="0"
+                        HeightRequest="40"
+                        WidthRequest="120" /> 
+                    
+                    <Button
+                        HorizontalOptions="EndAndExpand"
+                        Text="Expired  Medicines"
+                        TextColor="White"
+                        Clicked="OnclickToExpiredMedicines"
+                        BackgroundColor="CornflowerBlue"
+                        Padding="20,0,20,0"
+                        Margin="0"
+                        HeightRequest="40"
+                        WidthRequest="160" />
+                    
+                    <Button
+                        HorizontalOptions="EndAndExpand"
+                        Text="Patients List"
+                        TextColor="White"
+                        Clicked="OnClickToGetPetienstList"
+                        BackgroundColor="CornflowerBlue"
+                        Padding="20,0,20,0"
+                        Margin="0"
+                        HeightRequest="40"
+                        WidthRequest="120" />
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout
+                VerticalOptions="StartAndExpand"
+                Padding="0"
+                HeightRequest="60"
+                Margin="0,20,0,0">
+                <Grid
+                    ColumnDefinitions="*,*,*,*,*">
+
+                    <Label
+                        Text="Medicine"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand" />
+                    <Label
+                        Grid.Column="1"
+                        Text="Quantity"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="Start" />
+                    <Label
+                        Grid.Column="2"
+                        Text="Expiry Date"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="Start" /> 
+                    <Label
+                        Grid.Column="3"
+                        Text="Price"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="Start" />
+
+                </Grid>
+                <BoxView
+                    HeightRequest="2"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="SkyBlue" />
+            </StackLayout>
+            <ListView
+                Margin="0"
+                x:Name="MedlistView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="0,2,0,0">
+                                <Grid
+                                    VerticalOptions="Center"
+                                    ColumnDefinitions="*,*,*,*,*">
+                                    <Label
+                                        Text="{Binding Name}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding Qty}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+                                    <Label
+                                        Grid.Column="2"
+                                        Text="{Binding EXpDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+                                    <Label
+                                        Grid.Column="3"
+                                        Text="{Binding Price}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start" />
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand"
+                                        Spacing="3"
+                                        Orientation="Horizontal"
+                                        Grid.Column="4">
+                                        <Button
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="Edit"
+                                            TextColor="White"
+                                            Clicked="OnClickToEdit"
+                                            BackgroundColor="CornflowerBlue"
+                                            Padding="20,0,20,0"
+                                            Margin="0"
+                                            CommandParameter="{Binding .}"
+                                            HeightRequest="40" />
+                                        
+                                        <Button
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="Delete"
+                                            TextColor="White"
+                                            Clicked="OnClickToDelete"
+                                            BackgroundColor="CornflowerBlue"
+                                            Padding="20,0,20,0"
+                                            Margin="0"
+                                            CommandParameter="{Binding .}"
+                                            HeightRequest="40" />
+                                    </StackLayout>
+
+                                </Grid>
+                                <BoxView
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="CornflowerBlue" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

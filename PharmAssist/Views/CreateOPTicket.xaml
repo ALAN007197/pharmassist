@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:PharmAssist.Models"
+    x:Class="PharmAssist.Views.CreateOPTicket"
+             Title="Create OP Ticket">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid
+                Padding="20,40,20,20"
+                HorizontalOptions="FillAndExpand"
+                ColumnDefinitions="*,*">
+                <StackLayout
+                    Grid.Column="0">
+                    <StackLayout
+                        HorizontalOptions="Start">
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="OpID:"
+                            TextColor="Black" />
+                        <Label
+                            x:Name="OpId"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="CornflowerBlue"
+                            FontAttributes="Bold"
+                            FontSize="22"/>
+                    </StackLayout>
+                   
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Name:"
+                        TextColor="CornflowerBlue" />
+                    <Entry
+                        x:Name="OpName"
+                        HorizontalOptions="StartAndExpand"
+                        TextChanged="OnTextChange"
+                        WidthRequest="350"
+                        Placeholder="Enter Name"
+                        TextColor="Black" />
+
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Address:"
+                        TextColor="CornflowerBlue" />
+                    <Editor
+                        x:Name="OpAddress"
+                        HorizontalOptions="StartAndExpand"
+                        WidthRequest="350"
+                        HeightRequest="70"
+                        Placeholder="Enter Address"
+                        TextColor="Black"
+                        TextChanged="OnTextChange"/>
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Age:"
+                        TextColor="CornflowerBlue" />
+                    <Entry
+                        x:Name="OpAge"
+                        Keyboard="Numeric"
+                        HorizontalOptions="StartAndExpand"
+                        WidthRequest="350"
+                        Placeholder="Enter Age"
+                        TextColor="Black"
+                        TextChanged="OnTextChange"/>
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Phone:"
+                        TextColor="CornflowerBlue" />
+                    <Entry
+                        x:Name="OpMobile"
+                        Keyboard="Numeric"
+                        MaxLength="10"
+                        HorizontalOptions="Start"
+                        WidthRequest="350"
+                        Placeholder="Enter Phone Number"
+                        TextColor="Black"
+                        TextChanged="OnTextChange"/>
+
+                </StackLayout>
+
+
+
+                <StackLayout
+                    Grid.Column="1">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Gender:"
+                        TextColor="CornflowerBlue" />
+
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="10">
+                        <RadioButton
+                            x:Name="Male"
+                            Content="Male"
+                            TextColor="CornflowerBlue"
+                            GroupName="Gender"
+                            IsChecked="True" />
+                        <RadioButton
+                            x:Name="Female"
+                            Content="Female"
+                            GroupName="Gender"
+                            TextColor="CornflowerBlue"
+                            IsChecked="False" />
+                        <RadioButton
+                            Content="Other"
+                            GroupName="Gender"
+                            TextColor="CornflowerBlue"
+                            IsChecked="False" />
+                    </StackLayout>
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Department:"
+                        TextColor="CornflowerBlue" />
+                    <Picker
+                        x:Name="OpDepartMent"
+                        HorizontalOptions="StartAndExpand"
+                        WidthRequest="350"
+                        Title="Select Department"
+                        TextColor="Black"
+                        Unfocused="SelectionChange"/>
+
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Doctor:"
+                        TextColor="CornflowerBlue" />
+                    <Picker
+                        x:Name="OpDoctor"
+                        HorizontalOptions="StartAndExpand"
+                        WidthRequest="350"
+                        ItemDisplayBinding="{Binding DrName}"
+                        Title="Enter Doctor"
+                        TextColor="Black"
+                        Unfocused="SelectionChange"/>
+
+                </StackLayout>
+
+            </Grid>
+            <StackLayout
+                Padding="20"
+                Grid.Column="0"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="OpSubmit"
+                    HorizontalOptions="Center"
+                    Text="Submit"
+                    TextColor="White"
+                    BackgroundColor="CornflowerBlue"
+                    Padding="20,0,20,0"
+                    HeightRequest="40"
+                    WidthRequest="120"
+                    Clicked="OnClickToCreateOpTicket"/>
+
+                <Button
+                    HorizontalOptions="Center"
+                    Text="Cancel"
+                    TextColor="White"
+                    BackgroundColor="CornflowerBlue"
+                    Padding="20,0,20,0"
+                    HeightRequest="40"
+                    WidthRequest="120"
+                    Clicked="OnClickCancel"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

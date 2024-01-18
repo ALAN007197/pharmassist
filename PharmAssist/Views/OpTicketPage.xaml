@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PharmAssist.Views.OpTicketPage"
+             Title="OP Ticket Details">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         Margin="0"
+                         Padding="0"
+                         Spacing="0">
+                <Entry
+                    x:Name="OpSearch"
+                    WidthRequest="350"
+                    Placeholder="Search Op Ticket" />
+                <Button
+                    HorizontalOptions="StartAndExpand"
+                    Text="Search"
+                    Padding="20,0,20,0"
+                    BackgroundColor="CornflowerBlue"
+                    TextColor="White" 
+                    Clicked="OnSearchClicked"/>
+                
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="EndAndExpand">
+                    <Button
+                        Margin="0"
+                        Padding="10,0,10,0"
+                        HorizontalOptions="EndAndExpand"
+                        Text="Create OP Ticket"
+                        Clicked="OnclickToCreateOpTicket"
+                        BackgroundColor="CornflowerBlue"
+                        TextColor="White" />
+                    <Button
+                        Margin="0"
+                        Padding="10,0,10,0"
+                        HorizontalOptions="EndAndExpand"
+                        Text="Doctor Details"
+                        Clicked="OnClickToCreateDoctorDetails"
+                        BackgroundColor="CornflowerBlue"
+                        TextColor="White" />
+                </StackLayout>
+                
+               
+            </StackLayout>
+
+            <StackLayout
+                Margin="0,20,0,0">
+                <Grid
+                    ColumnDefinitions="*,*,*,*"
+                    HeightRequest="50">
+
+                    <Label
+                        Text="OP Ticket Number"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand" />
+                    <Label
+                        Grid.Column="1"
+                        Text="Name"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand"/>
+                    <Label
+                        Grid.Column="2"
+                        Text="Date"
+                        TextColor="CornflowerBlue"
+                        HorizontalOptions="StartAndExpand"/>
+
+                </Grid>
+                <BoxView
+                    HeightRequest="2"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="SkyBlue" />
+            </StackLayout>
+
+            <ListView
+                x:Name="OplistView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="0,2,0,0">
+                                <Grid
+                                    ColumnDefinitions="*,*,*,*">
+                                    <Label
+                                        Text="{Binding OpticketId}"
+                                        TextColor="Black"
+                                        HorizontalOptions="StartAndExpand" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding OpName}"
+                                        TextColor="Black"
+                                        HorizontalOptions="StartAndExpand" />
+                                    <Label
+                                        Grid.Column="2"
+                                        Text="{Binding CreatedDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        TextColor="Black"
+                                        HorizontalOptions="StartAndExpand" />
+
+                                </Grid>
+                                <BoxView
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="CornflowerBlue" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
